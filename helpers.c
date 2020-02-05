@@ -1,3 +1,5 @@
+// Solution to CS50's Fall 2019 Pset4 / Helpers.c by Nicolas Matiz.
+
 #include "helpers.h"
 #include <string.h>
 #include <math.h>
@@ -47,6 +49,7 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             float greenSepia = (0.349*(float)image[i][j].rgbtRed) + (0.686*(float)image[i][j].rgbtGreen) + (0.168*(float)image[i][j].rgbtBlue);
             float redSepia   = (0.393*(float)image[i][j].rgbtRed) + (0.769*(float)image[i][j].rgbtGreen) + (0.189*(float)image[i][j].rgbtBlue);
 
+            // Cap at [0-255]
             if(blueSepia > 255){
                 blueSepia = 255;
             }
@@ -83,7 +86,8 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    //printf("%d\n",width);
+    // swap first and last pixels in rows until we reach the middle
+    // printf("%d\n",width);
     for(int i = 0; i < height; i++){
         for(int j = 0; j < (width / 2); j++){
             swap(&image[i][j].rgbtBlue, &image[i][width - j - 1].rgbtBlue);
@@ -109,6 +113,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
+    // average each pixel
     for(int i=0; i < height; i++){
         for(int j=0; j < width; j++){
             // edges
@@ -189,8 +194,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                                copyImg[i+1][j-1].rgbtRed + copyImg[i+1][j].rgbtRed) / 6.0f;
                 }
             }
+            // all non edge pixels
             else{
-                // all non edge pixels
                 avgBlue = (copyImg[i-1][j-1].rgbtBlue + copyImg[i-1][j].rgbtBlue + copyImg[i-1][j+1].rgbtBlue +
                            copyImg[i][j-1].rgbtBlue   + copyImg[i][j].rgbtBlue   + copyImg[i][j+1].rgbtBlue +
                            copyImg[i+1][j-1].rgbtBlue + copyImg[i+1][j].rgbtBlue + copyImg[i+1][j+1].rgbtBlue ) / 9.0f;
@@ -202,7 +207,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                            copyImg[i+1][j-1].rgbtRed + copyImg[i+1][j].rgbtRed + copyImg[i+1][j+1].rgbtRed ) / 9.0f;
             }
 
-            // set colors to averages
+            // set colors to averages in original image
             image[i][j].rgbtBlue  = round(avgBlue)+0.5f;
             image[i][j].rgbtGreen = round(avgGreen)+0.5f;
             image[i][j].rgbtRed   = round(avgRed)+0.5f;
