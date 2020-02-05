@@ -1,3 +1,5 @@
+// Solution to CS50's Fall 2019 Pset3 / plurality.c by Nicolas Matiz.
+
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
@@ -68,7 +70,6 @@ bool vote(string name)
 {
     bool correctVote = false;
 
-    // TODO
     for(int i = 0; i < candidate_count;i++){
         // printf("name = %s \n", candidates[i].name);
 
@@ -85,7 +86,6 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
     int max = 0;
 
     // get max num of votes
