@@ -1,3 +1,5 @@
+// Solution to CS50's Fall 2019 Pset4 / recover.c by Nicolas Matiz.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
