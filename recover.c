@@ -62,8 +62,8 @@ int main(int argc, char *argv[])
             // printf("block 2\n");
         }
 
-        // if we did not found a header and img
-        // is open, keep writing until we find jpeg.
+        // if we did not found a jpeg and img
+        // is open, keep writing until we find it.
         // using readstatus to evade last picture write
         if(!foundJpeg && img){
             fwrite(buffer,512,readStatus,img);
