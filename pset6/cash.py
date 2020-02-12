@@ -1,4 +1,4 @@
-// Solution to CS50's Fall 2019 Pset6 / cash.py by Nicolas Matiz.
+# Solution to CS50's Fall 2019 Pset6 / cash.py by Nicolas Matiz.
 
 from cs50 import get_float
 
